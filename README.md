@@ -8,3 +8,4 @@
 - In this sprint you will be tasked with creating two separate Java programs and have two repos to represent the two parts. 
 - Part 1 = A server program that connects to a database and implements an API that is accessible via HTTP
 - Part 2 = A client (can be a simple text-based console application) which connects via http to the server, making use of the API
+- Test Feb 17, 2023
