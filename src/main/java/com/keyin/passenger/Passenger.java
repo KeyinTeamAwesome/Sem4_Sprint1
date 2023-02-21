@@ -18,7 +18,7 @@ public class Passenger {
     @ManyToOne
     private City city;
 
-    @ManyToOne
+    @ManyToMany
     private Aircraft aircraft;
 
     public long getId() {
@@ -59,5 +59,13 @@ public class Passenger {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Aircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Aircraft aircraft) {
+        this.aircraft = aircraft;
     }
 }
