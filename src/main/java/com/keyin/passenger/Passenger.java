@@ -60,4 +60,12 @@ public class Passenger {
     public void setCity(City city) {
         this.city = city;
     }
+
+    public Aircraft getAircraft() {
+        return aircraft;
+    }
+
+    public void setAircraft(Aircraft aircraft) {
+        this.aircraft = aircraft;
+    }
 }
