@@ -19,6 +19,10 @@ public class City {
     @OneToMany(mappedBy = "city")
     private List<Airport> airports;
 
+    public City() {
+    }
+
+
     public Long getId() {
         return id;
     }

@@ -24,6 +24,9 @@ public class Aircraft {
     @ManyToOne
     private Airport airport;
 
+    public Aircraft() {
+    }
+
     public Long getId() {
         return id;
     }

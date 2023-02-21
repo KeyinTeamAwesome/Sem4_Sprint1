@@ -17,6 +17,10 @@ public class Airport {
     @ManyToOne
     private City city;
 
+    public Airport() {
+    }
+
+
     public long getId() {
         return id;
     }

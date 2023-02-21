@@ -21,6 +21,11 @@ public class Passenger {
     @ManyToMany
     private Aircraft aircraft;
 
+
+    public Passenger() {
+    }
+
+
     public long getId() {
         return id;
     }
