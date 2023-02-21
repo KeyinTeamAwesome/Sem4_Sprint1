@@ -1,31 +1,29 @@
 package com.keyin.city;
 
+import com.keyin.airport.Airport;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class City {
     @Id
-    @SequenceGenerator(name = "city_sequence", sequenceName = "city_sequence", allocationSize = 1, initialValue=10)
     @GeneratedValue(generator = "city_sequence")
-    private long id;
+    @SequenceGenerator(name = "city_sequence", sequenceName = "city_sequence", allocationSize = 1, initialValue = 1)
+    private Long id;
 
     private String name;
+    private String state;
+    private int population;
 
-    @OneToOne
-    private TownHall townHall;
+    @OneToMany(mappedBy = "city")
+    private List<Airport> airports;
 
-    @ManyToMany
-    private List<Citizen> citizens;
-
-    public City() {
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -37,19 +35,27 @@ public class City {
         this.name = name;
     }
 
-    public TownHall getTownHall() {
-        return townHall;
+    public String getState() {
+        return state;
     }
 
-    public void setTownHall(TownHall townHall) {
-        this.townHall = townHall;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public List<Citizen> getCitizens() {
-        return citizens;
+    public int getPopulation() {
+        return population;
     }
 
-    public void setCitizens(List<Citizen> citizens) {
-        this.citizens = citizens;
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public List<Airport> getAirports() {
+        return (List<Airport>) airports;
+    }
+
+    public void setAirports(List<Airport> airports) {
+        this.airports = airports;
     }
 }
