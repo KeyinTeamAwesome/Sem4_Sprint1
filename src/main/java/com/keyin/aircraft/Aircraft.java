@@ -18,7 +18,7 @@ public class Aircraft {
     private String airlineName;
     private int numberOfPassengers;
 
-    @OneToMany(mappedBy = "aircraft")
+ @ManyToMany(mappedBy = "aircraft")
     private List<Passenger> passengers;
 
     @ManyToOne
