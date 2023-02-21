@@ -25,19 +25,20 @@ public class Airport {
         this.id = id;
     }
 
-    public String getName() {
+    public String getAirportName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setAirportName(String name) {
         this.name = name;
     }
 
-    public String getCode() {
+    public String getAirportCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setAirportCode(String code) {
         this.code = code;
     }
 }
+

@@ -1,6 +1,5 @@
 package com.keyin.aircraft;
 
-import com.keyin.airport.Airport;
 import com.keyin.passenger.Passenger;
 
 import javax.persistence.*;
