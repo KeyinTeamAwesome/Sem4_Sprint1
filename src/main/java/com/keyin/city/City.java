@@ -27,27 +27,27 @@ public class City {
         this.id = id;
     }
 
-    public String getName() {
+    public String getCityName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setCityName(String name) {
         this.name = name;
     }
 
-    public String getState() {
+    public String getCityState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setCityState(String state) {
         this.state = state;
     }
 
-    public int getPopulation() {
+    public int getCityPopulation() {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setCityPopulation(int population) {
         this.population = population;
     }
 
