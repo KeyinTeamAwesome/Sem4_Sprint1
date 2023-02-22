@@ -12,7 +12,7 @@ public class Aircraft {
     @Id
     @SequenceGenerator(name = "aircraft_sequence", sequenceName = "aircraft_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "aircraft_sequence")
-    private Long id;
+    private long id;
 
     private String type;
     private String airlineName;
@@ -28,11 +28,11 @@ public class Aircraft {
     public Aircraft() {
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

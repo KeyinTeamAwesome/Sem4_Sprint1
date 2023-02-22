@@ -66,11 +66,4 @@ public class Airport {
         this.aircraft = aircraft;
     }
 
-//    public Aircraft getAircraft() {
-//        return aircraft;
-//    }
-//
-//    public void setAircraft(Aircraft aircraft) {
-//        this.aircraft = aircraft;
-//    }
 }
