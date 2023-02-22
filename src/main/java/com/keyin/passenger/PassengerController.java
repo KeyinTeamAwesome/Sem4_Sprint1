@@ -1,5 +1,7 @@
 package com.keyin.passenger;
 
+import com.keyin.aircraft.Aircraft;
+import com.keyin.city.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +48,21 @@ public class PassengerController {
                 throw new RuntimeException(e);
             }
         }
+        }
+    @DeleteMapping("/passenger/{id}")
+    public void deletePassenger(@PathVariable String id, HttpServletResponse response) {
+        Optional<Passenger> returnValue = repo.findById(Long.parseLong(id));
+
+        if (returnValue.isPresent()) {
+            repo.deleteById(Long.parseLong(id));
+        } else {
+            try {
+                response.sendError(404, "Passenger with id: " + id + " not found.");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
-}
+
+    }

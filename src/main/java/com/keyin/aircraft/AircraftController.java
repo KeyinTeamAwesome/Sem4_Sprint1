@@ -53,20 +53,20 @@ public class AircraftController {
         }
     }
 
-//    @DeleteMapping("/aircraft/{id}")
-//    public void deleteAircraft(@PathVariable String id, HttpServletResponse response) {
-//        Optional<Aircraft> returnValue = repo.findById(Long.parseLong(id));
-//
-//        if (returnValue.isPresent()) {
-//            repo.deleteById(Long.parseLong(id));
-//        } else {
-//            try {
-//                response.sendError(404, "Aircraft with id: " + id + " not found.");
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
+    @DeleteMapping("/aircraft/{id}")
+    public void deleteAircraft(@PathVariable String id, HttpServletResponse response) {
+        Optional<Aircraft> returnValue = repo.findById(Long.parseLong(id));
+
+        if (returnValue.isPresent()) {
+            repo.deleteById(Long.parseLong(id));
+        } else {
+            try {
+                response.sendError(404, "Aircraft with id: " + id + " not found.");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
 
 }
