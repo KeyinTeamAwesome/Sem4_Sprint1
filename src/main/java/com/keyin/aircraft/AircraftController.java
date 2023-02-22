@@ -14,8 +14,8 @@ public class AircraftController {
     @Autowired
     private AircraftRepository repo;
 
-    @GetMapping("/aircrafts")
-    public List<Aircraft> getAllAircrafts() {
+    @GetMapping("/aircraft")
+    public List<Aircraft> getAllAircraft() {
         return (List<Aircraft>) repo.findAll();
     }
 
@@ -40,6 +40,8 @@ public class AircraftController {
             aircraftToUpdate.setType(aircraft.getType());
             aircraftToUpdate.setAirlineName(aircraft.getAirlineName());
             aircraftToUpdate.setNumberOfPassengers(aircraft.getNumberOfPassengers());
+            aircraftToUpdate.setAirport(aircraft.getAirport());
+            aircraftToUpdate.setPassengers(aircraft.getPassengers());
 
             repo.save(aircraftToUpdate);
         } else {

@@ -24,6 +24,7 @@ public class Aircraft {
     @ManyToOne
     private Airport airport;
 
+
     public Aircraft() {
     }
 
@@ -66,6 +67,7 @@ public class Aircraft {
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
     }
+
 
     public Airport getAirport() {
         return airport;

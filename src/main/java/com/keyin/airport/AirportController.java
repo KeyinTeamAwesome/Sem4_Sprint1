@@ -39,6 +39,8 @@ public class AirportController {
 
             airportToUpdate.setAirportName(airport.getAirportName());
             airportToUpdate.setAirportCode(airport.getAirportCode());
+            airportToUpdate.setCity(airport.getCity());
+            airportToUpdate.setAircraft(airport.getAircraft());
 
             repo.save(airportToUpdate);
         } else {
