@@ -40,6 +40,7 @@ public class CityController {
             cityToUpdate.setCityName(city.getCityName());
             cityToUpdate.setCityState(city.getCityState());
             cityToUpdate.setCityPopulation(city.getCityPopulation());
+            cityToUpdate.setAirport(city.getAirport());
 
             repo.save(cityToUpdate);
         } else {
@@ -51,18 +52,18 @@ public class CityController {
         }
     }
 
-    @DeleteMapping("/city/{id}")
-    public void deleteCity(@PathVariable String id, HttpServletResponse response) {
-        Optional<City> returnValue = repo.findById(Long.parseLong(id));
-
-        if (returnValue.isPresent()) {
-            repo.deleteById(Long.parseLong(id));
-        } else {
-            try {
-                response.sendError(404, "City with id: " + id + " not found.");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+//    @DeleteMapping("/city/{id}")
+//    public void deleteCity(@PathVariable String id, HttpServletResponse response) {
+//        Optional<City> returnValue = repo.findById(Long.parseLong(id));
+//
+//        if (returnValue.isPresent()) {
+//            repo.deleteById(Long.parseLong(id));
+//        } else {
+//            try {
+//                response.sendError(404, "City with id: " + id + " not found.");
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
 }

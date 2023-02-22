@@ -55,11 +55,11 @@ public class City {
         this.population = population;
     }
 
-    public List<Airport> getAirports() {
+    public List<Airport> getAirport() {
         return (List<Airport>) airports;
     }
 
-    public void setAirports(List<Airport> airports) {
+    public void setAirport(List<Airport> airports) {
         this.airports = airports;
     }
 }
