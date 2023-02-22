@@ -14,8 +14,8 @@ public class AircraftController {
     @Autowired
     private AircraftRepository repo;
 
-    @GetMapping("/aircrafts")
-    public List<Aircraft> getAllAircrafts() {
+    @GetMapping("/aircraft")
+    public List<Aircraft> getAllAircraft() {
         return (List<Aircraft>) repo.findAll();
     }
 
@@ -40,6 +40,8 @@ public class AircraftController {
             aircraftToUpdate.setType(aircraft.getType());
             aircraftToUpdate.setAirlineName(aircraft.getAirlineName());
             aircraftToUpdate.setNumberOfPassengers(aircraft.getNumberOfPassengers());
+            aircraftToUpdate.setAirport(aircraft.getAirport());
+            aircraftToUpdate.setPassengers(aircraft.getPassengers());
 
             repo.save(aircraftToUpdate);
         } else {
@@ -51,20 +53,20 @@ public class AircraftController {
         }
     }
 
-    @DeleteMapping("/aircraft/{id}")
-    public void deleteAircraft(@PathVariable String id, HttpServletResponse response) {
-        Optional<Aircraft> returnValue = repo.findById(Long.parseLong(id));
-
-        if (returnValue.isPresent()) {
-            repo.deleteById(Long.parseLong(id));
-        } else {
-            try {
-                response.sendError(404, "Aircraft with id: " + id + " not found.");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
+//    @DeleteMapping("/aircraft/{id}")
+//    public void deleteAircraft(@PathVariable String id, HttpServletResponse response) {
+//        Optional<Aircraft> returnValue = repo.findById(Long.parseLong(id));
+//
+//        if (returnValue.isPresent()) {
+//            repo.deleteById(Long.parseLong(id));
+//        } else {
+//            try {
+//                response.sendError(404, "Aircraft with id: " + id + " not found.");
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }
+//    }
 
 
 }
