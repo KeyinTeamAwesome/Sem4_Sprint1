@@ -1,7 +1,7 @@
 package com.keyin.aircraft;
 
-import com.keyin.airport.Airport;
 import com.keyin.passenger.Passenger;
+import com.keyin.airport.Airport;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,23 +12,27 @@ public class Aircraft {
     @Id
     @SequenceGenerator(name = "aircraft_sequence", sequenceName = "aircraft_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "aircraft_sequence")
-    private Long id;
+    private long id;
 
     private String type;
     private String airlineName;
     private int numberOfPassengers;
 
-    @OneToMany(mappedBy = "aircraft")
+ @ManyToMany(mappedBy = "aircraft")
     private List<Passenger> passengers;
 
     @ManyToOne
     private Airport airport;
 
-    public Long getId() {
+
+    public Aircraft() {
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -63,6 +67,7 @@ public class Aircraft {
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
     }
+
 
     public Airport getAirport() {
         return airport;
