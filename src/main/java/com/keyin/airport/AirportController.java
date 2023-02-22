@@ -53,18 +53,18 @@ public class AirportController {
         }
     }
 
-//    @DeleteMapping("/airport/{id}")
-//    public void deleteAirport(@PathVariable String id, HttpServletResponse response) {
-//        Optional<Airport> returnValue = repo.findById(Long.parseLong(id));
-//
-//        if (returnValue.isPresent()) {
-//            repo.deleteById(Long.parseLong(id));
-//        } else {
-//            try {
-//                response.sendError(404, "Airport with id: " + id + " not found.");
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
-//        }
-//    }
+    @DeleteMapping("/airport/{id}")
+    public void deleteAirport(@PathVariable String id, HttpServletResponse response) {
+        Optional<Airport> returnValue = repo.findById(Long.parseLong(id));
+
+        if (returnValue.isPresent()) {
+            repo.deleteById(Long.parseLong(id));
+        } else {
+            try {
+                response.sendError(404, "Airport with id: " + id + " not found.");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }
