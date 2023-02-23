@@ -16,11 +16,12 @@ public class City {
     private String state;
     private int population;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany
     private List<Airport> airports;
 
     public City() {
     }
+
 
 
     public Long getId() {
@@ -55,11 +56,13 @@ public class City {
         this.population = population;
     }
 
-    public List<Airport> getAirport() {
+    public List<Airport> getAirports() {
         return (List<Airport>) airports;
     }
 
     public void setAirport(List<Airport> airports) {
         this.airports = airports;
     }
+
+
 }
