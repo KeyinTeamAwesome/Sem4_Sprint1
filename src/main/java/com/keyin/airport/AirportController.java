@@ -1,5 +1,7 @@
 package com.keyin.airport;
 
+import com.keyin.city.City;
+import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class AirportController {
     @Autowired
     private AirportRepository repo;
 
+    @Autowired
+    private CityRepository cityRepo;
+
     @GetMapping("/airports")
     public List<Airport> getAllAirports() {
         return (List<Airport>) repo.findAll();
@@ -26,8 +31,16 @@ public class AirportController {
     }
 
     @PostMapping("/airport")
-    public void createAirport(@RequestBody Airport airport) {
-        repo.save(airport);
+    public void createAirport(@RequestBody AirportOTA airportOTA) {
+
+        Airport newAirport = new Airport();
+
+        Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
+
+        newAirport.setCity(returnValue.get());
+        newAirport.setAirportCode(airportOTA.getCode());
+        newAirport.setAirportName(airportOTA.getName());
+        repo.save(newAirport);
     }
 
     @PutMapping("/airport/{id}")
