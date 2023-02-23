@@ -1,6 +1,7 @@
 package com.keyin.city;
 
 import com.keyin.airport.Airport;
+import com.keyin.passenger.Passenger;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,9 +20,10 @@ public class City {
     @OneToMany
     private List<Airport> airports;
 
+    @OneToMany
+    private List<Passenger> passengers;
     public City() {
     }
-
 
 
     public Long getId() {
@@ -60,6 +62,9 @@ public class City {
         return (List<Airport>) airports;
     }
 
+    public List <Passenger> getPassengers() {
+        return (List<Passenger>) passengers;
+    }
     public void setAirport(List<Airport> airports) {
         this.airports = airports;
     }
