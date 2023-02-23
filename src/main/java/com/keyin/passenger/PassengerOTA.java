@@ -1,34 +1,12 @@
 package com.keyin.passenger;
 
-import com.keyin.aircraft.Aircraft;
-import com.keyin.airport.Airport;
-import com.keyin.city.City;
+public class PassengerOTA {
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-public class Passenger {
-    @Id
-    @SequenceGenerator(name = "passenger_sequence", sequenceName = "passenger_sequence", allocationSize = 1, initialValue=1)
-    @GeneratedValue(generator = "passenger_sequence")
-    private long id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
-
-
-    public Passenger() {
-    }
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private long cityId;
+    private long aircraftId;
 
     public String getFirstName() {
         return firstName;
@@ -54,4 +32,19 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
+    public long getCityId() {
+        return cityId;
     }
+
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
+    }
+
+    public long getAircraftId() {
+        return aircraftId;
+    }
+
+    public void setAircraftId(long aircraftId) {
+        this.aircraftId = aircraftId;
+    }
+}

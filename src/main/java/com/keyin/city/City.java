@@ -1,6 +1,7 @@
 package com.keyin.city;
 
 import com.keyin.airport.Airport;
+import com.keyin.passenger.Passenger;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,9 +17,11 @@ public class City {
     private String state;
     private int population;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany
     private List<Airport> airports;
 
+    @OneToMany
+    private List<Passenger> passengers;
     public City() {
     }
 
@@ -55,11 +58,17 @@ public class City {
         this.population = population;
     }
 
-    public List<Airport> getAirport() {
+    public List<Airport> getAirports() {
         return (List<Airport>) airports;
     }
 
-    public void setAirport(List<Airport> airports) {
-        this.airports = airports;
+    public List <Passenger> getPassengers() {
+        return (List<Passenger>) passengers;
     }
+
+//    public void setAirport(List<Airport> airports) {
+//        this.airports = airports;
+//    }
+
+
 }

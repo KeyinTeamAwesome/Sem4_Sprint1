@@ -15,11 +15,7 @@ public class Airport {
     private String airportName;
     private String airportCode;
 
-    @ManyToOne
-    private City city;
 
-    @OneToMany
-    private List<Aircraft> aircraft;
 
 
     public Airport() {
@@ -48,22 +44,6 @@ public class Airport {
 
     public void setAirportCode(String airportCode) {
         this.airportCode = airportCode;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
-    public List<Aircraft> getAircraft() {
-        return (List<Aircraft>) aircraft;
-    }
-
-    public void setAircraft(List<Aircraft> aircraft) {
-        this.aircraft = aircraft;
     }
 
 }

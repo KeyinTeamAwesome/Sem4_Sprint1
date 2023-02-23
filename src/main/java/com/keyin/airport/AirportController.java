@@ -1,9 +1,12 @@
 package com.keyin.airport;
 
+import com.keyin.aircraft.Aircraft;
+import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -18,6 +21,10 @@ public class AirportController {
 
     @Autowired
     private CityRepository cityRepo;
+
+
+    @Autowired
+    private AircraftRepository aircraftRepo;
 
     @GetMapping("/airports")
     public List<Airport> getAllAirports() {
@@ -36,12 +43,22 @@ public class AirportController {
         Airport newAirport = new Airport();
 
         Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
+        Optional<Aircraft> returnAircraftValue = aircraftRepo.findById(airportOTA.getAircraftId());
 
-        newAirport.setCity(returnValue.get());
         newAirport.setAirportCode(airportOTA.getCode());
         newAirport.setAirportName(airportOTA.getName());
         repo.save(newAirport);
+
+        City city = returnValue.get();
+        Aircraft aircraft = returnAircraftValue.get();
+
+        city.getAirports().add(newAirport);
+        cityRepo.save(city);
+        aircraft.getAirports().add(newAirport);
+        aircraftRepo.save(aircraft);
+
     }
+
 
     @PutMapping("/airport/{id}")
     public void updateAirport(@PathVariable String id, @RequestBody Airport airport, HttpServletResponse response) {
@@ -53,8 +70,6 @@ public class AirportController {
 
             airportToUpdate.setAirportName(airport.getAirportName());
             airportToUpdate.setAirportCode(airport.getAirportCode());
-            airportToUpdate.setCity(airport.getCity());
-            airportToUpdate.setAircraft(airport.getAircraft());
 
             repo.save(airportToUpdate);
         } else {

@@ -18,12 +18,12 @@ public class Aircraft {
     private String airlineName;
     private int numberOfPassengers;
 
- @ManyToMany(mappedBy = "aircraft")
+
+    @ManyToMany
+    private List<Airport> airports;
+
+    @ManyToMany
     private List<Passenger> passengers;
-
-    @ManyToOne
-    private Airport airport;
-
 
     public Aircraft() {
     }
@@ -60,20 +60,13 @@ public class Aircraft {
         this.numberOfPassengers = numberOfPassengers;
     }
 
-    public List<Passenger> getPassengers() {
-        return passengers;
+    public List<Airport> getAirports() {
+        return (List<Airport>) airports;
+    }
+    public List <Passenger> getPassengers() {
+        return (List<Passenger>) passengers;
     }
 
-    public void setPassengers(List<Passenger> passengers) {
-        this.passengers = passengers;
-    }
 
 
-    public Airport getAirport() {
-        return airport;
-    }
-
-    public void setAirport(Airport airport) {
-        this.airport = airport;
-    }
 }
