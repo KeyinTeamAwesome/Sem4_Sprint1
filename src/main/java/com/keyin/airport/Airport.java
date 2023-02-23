@@ -15,8 +15,6 @@ public class Airport {
     private String airportName;
     private String airportCode;
 
-    @ManyToOne
-    private City city;
 
     @OneToMany
     private List<Aircraft> aircraft;
@@ -50,13 +48,8 @@ public class Airport {
         this.airportCode = airportCode;
     }
 
-    public City getCity() {
-        return city;
-    }
 
-    public void setCity(City city) {
-        this.city = city;
-    }
+
 
     public List<Aircraft> getAircraft() {
         return (List<Aircraft>) aircraft;

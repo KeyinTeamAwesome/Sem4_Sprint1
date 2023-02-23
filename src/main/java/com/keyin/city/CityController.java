@@ -40,7 +40,6 @@ public class CityController {
             cityToUpdate.setCityName(city.getCityName());
             cityToUpdate.setCityState(city.getCityState());
             cityToUpdate.setCityPopulation(city.getCityPopulation());
-            cityToUpdate.setAirport(city.getAirport());
 
             repo.save(cityToUpdate);
         } else {

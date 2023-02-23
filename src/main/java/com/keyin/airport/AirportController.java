@@ -5,6 +5,7 @@ import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -37,10 +38,15 @@ public class AirportController {
 
         Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
 
-        newAirport.setCity(returnValue.get());
         newAirport.setAirportCode(airportOTA.getCode());
         newAirport.setAirportName(airportOTA.getName());
         repo.save(newAirport);
+
+        City city = returnValue.get();
+
+        city.getAirports().add(newAirport);
+        cityRepo.save(city);
+
     }
 
 
@@ -54,7 +60,6 @@ public class AirportController {
 
             airportToUpdate.setAirportName(airport.getAirportName());
             airportToUpdate.setAirportCode(airport.getAirportCode());
-            airportToUpdate.setCity(airport.getCity());
             airportToUpdate.setAircraft(airport.getAircraft());
 
             repo.save(airportToUpdate);

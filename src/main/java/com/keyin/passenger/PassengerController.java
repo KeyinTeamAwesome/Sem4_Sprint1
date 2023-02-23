@@ -1,7 +1,11 @@
 package com.keyin.passenger;
 
 import com.keyin.aircraft.Aircraft;
+import com.keyin.airport.Airport;
+import com.keyin.airport.AirportOTA;
+import com.keyin.airport.AirportRepository;
 import com.keyin.city.City;
+import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +20,33 @@ public class PassengerController {
     @Autowired
     private PassengerRepository repo;
 
+    @Autowired
+    private CityRepository cityRepo;
+
     @GetMapping("/passengers")
     public List<Passenger> getAllPassengers() {
         return (List<Passenger>) repo.findAll();
     }
 
     @PostMapping("/passenger")
-    public void createPassenger(@RequestBody Passenger passenger) {
-        repo.save(passenger);
+    public void createPassenger(@RequestBody PassengerOTA passengerOTA) {
+
+        Passenger newPassenger = new Passenger();
+
+        Optional<City> returnValue = cityRepo.findById(passengerOTA.getCityId());
+
+        newPassenger.setLastName(passengerOTA.getLastName());
+        newPassenger.setFirstName(passengerOTA.getFirstName());
+        newPassenger.setPhoneNumber(passengerOTA.getPhoneNumber());
+
+
+        repo.save(newPassenger);
+
+        City city = returnValue.get();
+
+        city.getPassengers().add(newPassenger);
+        cityRepo.save(city);
+
     }
 
     @PutMapping("/passenger/{id}")
@@ -37,7 +60,6 @@ public class PassengerController {
             passengerToUpdate.setFirstName(passenger.getFirstName());
             passengerToUpdate.setLastName(passenger.getLastName());
             passengerToUpdate.setPhoneNumber(passenger.getPhoneNumber());
-            passengerToUpdate.setCity(passenger.getCity());
             passengerToUpdate.setAircraft(passenger.getAircraft());
 
             repo.save(passengerToUpdate);
