@@ -43,10 +43,6 @@ public class AirportController {
         repo.save(newAirport);
     }
 
-//    @PostMapping("/airport")
-//    public void createAirport(@RequestBody Airport airport) {
-//        repo.save(airport);
-//    }
 
     @PutMapping("/airport/{id}")
     public void updateAirport(@PathVariable String id, @RequestBody Airport airport, HttpServletResponse response) {
