@@ -30,23 +30,23 @@ public class AirportController {
         return repo.findById(id);
     }
 
-//    @PostMapping("/airport")
-//    public void createAirport(@RequestBody AirportOTA airportOTA) {
-//
-//        Airport newAirport = new Airport();
-//
-//        Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
-//
-//        newAirport.setCity(returnValue.get());
-//        newAirport.setAirportCode(airportOTA.getCode());
-//        newAirport.setAirportName(airportOTA.getName());
-//        repo.save(newAirport);
-//    }
-
     @PostMapping("/airport")
-    public void createAirport(@RequestBody Airport airport) {
-        repo.save(airport);
+    public void createAirport(@RequestBody AirportOTA airportOTA) {
+
+        Airport newAirport = new Airport();
+
+        Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
+
+        newAirport.setCity(returnValue.get());
+        newAirport.setAirportCode(airportOTA.getCode());
+        newAirport.setAirportName(airportOTA.getName());
+        repo.save(newAirport);
     }
+
+//    @PostMapping("/airport")
+//    public void createAirport(@RequestBody Airport airport) {
+//        repo.save(airport);
+//    }
 
     @PutMapping("/airport/{id}")
     public void updateAirport(@PathVariable String id, @RequestBody Airport airport, HttpServletResponse response) {
