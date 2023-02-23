@@ -1,9 +1,11 @@
 package com.keyin.passenger;
 
 import com.keyin.aircraft.Aircraft;
+import com.keyin.airport.Airport;
 import com.keyin.city.City;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Passenger {
@@ -18,8 +20,13 @@ public class Passenger {
     @ManyToOne
     private City city;
 
-    @ManyToOne
-    private Aircraft aircraft;
+    @ManyToMany
+    private List<Aircraft> aircraft;
+
+
+    public Passenger() {
+    }
+
 
     public long getId() {
         return id;
@@ -60,4 +67,20 @@ public class Passenger {
     public void setCity(City city) {
         this.city = city;
     }
+
+    public List<Aircraft> getAircraft() {
+        return (List<Aircraft>) aircraft;
+    }
+
+    public void setAircraft(List<Aircraft> aircraft) {
+        this.aircraft = aircraft;
+    }
+
+//    public Aircraft getAircraft() {
+//        return aircraft;
+//    }
+//
+//    public void setAircraft(Aircraft aircraft) {
+//        this.aircraft = aircraft;
+//    }
 }
