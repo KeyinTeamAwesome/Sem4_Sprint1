@@ -1,5 +1,7 @@
 package com.keyin.airport;
 
+import com.keyin.aircraft.Aircraft;
+import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,10 @@ public class AirportController {
     @Autowired
     private CityRepository cityRepo;
 
+
+    @Autowired
+    private AircraftRepository aircraftRepo;
+
     @GetMapping("/airports")
     public List<Airport> getAllAirports() {
         return (List<Airport>) repo.findAll();
@@ -37,15 +43,19 @@ public class AirportController {
         Airport newAirport = new Airport();
 
         Optional<City> returnValue = cityRepo.findById(airportOTA.getCityId());
+        Optional<Aircraft> returnAircraftValue = aircraftRepo.findById(airportOTA.getAircraftId());
 
         newAirport.setAirportCode(airportOTA.getCode());
         newAirport.setAirportName(airportOTA.getName());
         repo.save(newAirport);
 
         City city = returnValue.get();
+        Aircraft aircraft = returnAircraftValue.get();
 
         city.getAirports().add(newAirport);
         cityRepo.save(city);
+        aircraft.getAirports().add(newAirport);
+        aircraftRepo.save(aircraft);
 
     }
 
@@ -60,7 +70,6 @@ public class AirportController {
 
             airportToUpdate.setAirportName(airport.getAirportName());
             airportToUpdate.setAirportCode(airport.getAirportCode());
-            airportToUpdate.setAircraft(airport.getAircraft());
 
             repo.save(airportToUpdate);
         } else {

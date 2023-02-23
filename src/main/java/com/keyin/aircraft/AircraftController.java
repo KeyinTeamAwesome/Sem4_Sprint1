@@ -40,8 +40,6 @@ public class AircraftController {
             aircraftToUpdate.setType(aircraft.getType());
             aircraftToUpdate.setAirlineName(aircraft.getAirlineName());
             aircraftToUpdate.setNumberOfPassengers(aircraft.getNumberOfPassengers());
-            aircraftToUpdate.setAirport(aircraft.getAirport());
-            aircraftToUpdate.setPassengers(aircraft.getPassengers());
 
             repo.save(aircraftToUpdate);
         } else {

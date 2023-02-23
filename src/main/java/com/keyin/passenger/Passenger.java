@@ -17,9 +17,6 @@ public class Passenger {
     private String lastName;
     private String phoneNumber;
 
-    @ManyToMany
-    private List<Aircraft> aircraft;
-
 
     public Passenger() {
     }
@@ -57,19 +54,4 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Aircraft> getAircraft() {
-        return (List<Aircraft>) aircraft;
     }
-
-    public void setAircraft(List<Aircraft> aircraft) {
-        this.aircraft = aircraft;
-    }
-
-//    public Aircraft getAircraft() {
-//        return aircraft;
-//    }
-//
-//    public void setAircraft(Aircraft aircraft) {
-//        this.aircraft = aircraft;
-//    }
-}

@@ -1,15 +1,14 @@
 package com.keyin.passenger;
 
 import com.keyin.aircraft.Aircraft;
-import com.keyin.airport.Airport;
-import com.keyin.airport.AirportOTA;
-import com.keyin.airport.AirportRepository;
+import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.html.Option;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +22,9 @@ public class PassengerController {
     @Autowired
     private CityRepository cityRepo;
 
+    @Autowired
+    private AircraftRepository aircraftRepo;
+
     @GetMapping("/passengers")
     public List<Passenger> getAllPassengers() {
         return (List<Passenger>) repo.findAll();
@@ -34,18 +36,23 @@ public class PassengerController {
         Passenger newPassenger = new Passenger();
 
         Optional<City> returnValue = cityRepo.findById(passengerOTA.getCityId());
+        Optional<Aircraft> returnAircraftValue = aircraftRepo.findById(passengerOTA.getAircraftId());
+
 
         newPassenger.setLastName(passengerOTA.getLastName());
         newPassenger.setFirstName(passengerOTA.getFirstName());
         newPassenger.setPhoneNumber(passengerOTA.getPhoneNumber());
 
-
         repo.save(newPassenger);
 
         City city = returnValue.get();
+        Aircraft aircraft = returnAircraftValue.get();
+
 
         city.getPassengers().add(newPassenger);
+        aircraft.getPassengers().add(newPassenger);
         cityRepo.save(city);
+        aircraftRepo.save(aircraft);
 
     }
 
@@ -60,7 +67,6 @@ public class PassengerController {
             passengerToUpdate.setFirstName(passenger.getFirstName());
             passengerToUpdate.setLastName(passenger.getLastName());
             passengerToUpdate.setPhoneNumber(passenger.getPhoneNumber());
-            passengerToUpdate.setAircraft(passenger.getAircraft());
 
             repo.save(passengerToUpdate);
         } else {
