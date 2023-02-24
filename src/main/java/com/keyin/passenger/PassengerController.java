@@ -4,8 +4,6 @@ import com.keyin.aircraft.Aircraft;
 import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
-import com.keyin.airport.Airport;
-import com.keyin.airport.AirportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,14 +24,11 @@ public class PassengerController {
 
     @Autowired
     private AircraftRepository aircraftRepo;
-    @Autowired
-    private AirportRepository airportRepo;
 
     @GetMapping("/passengers")
     public List<Passenger> getAllPassengers() {
         return (List<Passenger>) repo.findAll();
     }
-
 
     @PostMapping("/passenger")
     public void createPassenger(@RequestBody PassengerOTA passengerOTA) {
@@ -42,7 +37,6 @@ public class PassengerController {
 
         Optional<City> returnValue = cityRepo.findById(passengerOTA.getCityId());
         Optional<Aircraft> returnAircraftValue = aircraftRepo.findById(passengerOTA.getAircraftId());
-        Optional<Airport> returnAirportValue = airportRepo.findById(passengerOTA.getAirportId());
 
 
         newPassenger.setLastName(passengerOTA.getLastName());
@@ -53,15 +47,12 @@ public class PassengerController {
 
         City city = returnValue.get();
         Aircraft aircraft = returnAircraftValue.get();
-        Airport airport = returnAirportValue.get();
 
 
         city.getPassengers().add(newPassenger);
         aircraft.getPassengers().add(newPassenger);
-        airport.getPassengers().add(newPassenger);
         cityRepo.save(city);
         aircraftRepo.save(aircraft);
-        airportRepo.save(airport);
 
     }
 
@@ -77,8 +68,6 @@ public class PassengerController {
             passengerToUpdate.setLastName(passenger.getLastName());
             passengerToUpdate.setPhoneNumber(passenger.getPhoneNumber());
 
-            //HAVE TO ADD FOREIGN KEYS HERE!!!!!
-
             repo.save(passengerToUpdate);
         } else {
             try {
@@ -87,7 +76,7 @@ public class PassengerController {
                 throw new RuntimeException(e);
             }
         }
-        }
+    }
     @DeleteMapping("/passenger/{id}")
     public void deletePassenger(@PathVariable String id, HttpServletResponse response) {
         Optional<Passenger> returnValue = repo.findById(Long.parseLong(id));
@@ -104,4 +93,4 @@ public class PassengerController {
     }
 
 
-    }
+}

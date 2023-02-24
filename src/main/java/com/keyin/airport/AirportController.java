@@ -1,10 +1,10 @@
 package com.keyin.airport;
 
+
 import com.keyin.aircraft.Aircraft;
 import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
-import com.keyin.passenger.Passenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,11 +36,6 @@ public class AirportController {
     @GetMapping("/airport/{id}")
     public Optional<Airport> getAirportById(@PathVariable Long id) {
         return repo.findById(id);
-    }
-
-    @GetMapping("/airport/passengers_search")
-    public List<Airport> getAirportByPassengers(@RequestParam String lastName) {
-        return (List<Airport>) repo.findByPassengers_lastName(lastName);
     }
 
     @PostMapping("/airport")
