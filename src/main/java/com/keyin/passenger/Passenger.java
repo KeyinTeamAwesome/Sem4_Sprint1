@@ -1,11 +1,7 @@
 package com.keyin.passenger;
 
-import com.keyin.aircraft.Aircraft;
-import com.keyin.airport.Airport;
-import com.keyin.city.City;
-
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 public class Passenger {
