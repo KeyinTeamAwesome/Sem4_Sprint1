@@ -38,6 +38,11 @@ public class AirportController {
         return repo.findById(id);
     }
 
+    @GetMapping("/airport/passengers_search")
+    public List<Airport> getAirportByPassengers(@RequestParam String lastName) {
+        return (List<Airport>) repo.findByPassengers_lastName(lastName);
+    }
+
     @PostMapping("/airport")
     public void createAirport(@RequestBody AirportOTA airportOTA) {
 

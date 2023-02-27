@@ -2,6 +2,7 @@ package com.keyin.airport;
 
 import com.keyin.city.City;
 import com.keyin.aircraft.Aircraft;
+import com.keyin.passenger.Passenger;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,6 +15,9 @@ public class Airport {
     private long id;
     private String airportName;
     private String airportCode;
+
+    @ManyToMany
+    private List<Passenger> passengers;
 
 
     public Airport() {
@@ -42,6 +46,10 @@ public class Airport {
 
     public void setAirportCode(String airportCode) {
         this.airportCode = airportCode;
+    }
+
+    public List <Passenger> getPassengers() {
+        return (List<Passenger>) passengers;
     }
 
 }

@@ -8,6 +8,8 @@ public class PassengerOTA {
     private long cityId;
     private long aircraftId;
 
+    private long airportId;
+
     public String getFirstName() {
         return firstName;
     }
@@ -46,6 +48,14 @@ public class PassengerOTA {
 
     public void setAircraftId(long aircraftId) {
         this.aircraftId = aircraftId;
+    }
+
+    public long getAirportId() {
+        return airportId;
+    }
+
+    public void setAirportId(long airportId) {
+        this.airportId = airportId;
     }
 
 }
