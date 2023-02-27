@@ -1,5 +1,6 @@
 package com.keyin.city;
 
+import com.keyin.aircraft.Aircraft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,11 @@ public class CityController {
     @GetMapping("/city/{id}")
     public Optional<City> getCityById(@PathVariable Long id) {
         return repo.findById(id);
+    }
+
+    @GetMapping("/cities/airports_search")
+    public List<City> getCitiesByAirports(@RequestParam String airportName) {
+        return (List<City>) repo.findByAirports_airportName(airportName);
     }
 
     @PostMapping("/city")

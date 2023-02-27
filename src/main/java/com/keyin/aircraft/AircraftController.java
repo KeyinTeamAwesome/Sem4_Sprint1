@@ -24,6 +24,16 @@ public class AircraftController {
         return repo.findById(id);
     }
 
+    @GetMapping("/aircraft/airports_search")
+    public List<Aircraft> getAircraftByAirports(@RequestParam String airportName) {
+        return (List<Aircraft>) repo.findByAirports_airportName(airportName);
+    }
+
+    @GetMapping("/aircraft/passengers_search")
+    public List<Aircraft> getAircraftByPassengers(@RequestParam String lastName) {
+        return (List<Aircraft>) repo.findByPassengers_lastName(lastName);
+    }
+
     @PostMapping("/aircraft")
     public void createAircraft(@RequestBody Aircraft aircraft) {
         repo.save(aircraft);

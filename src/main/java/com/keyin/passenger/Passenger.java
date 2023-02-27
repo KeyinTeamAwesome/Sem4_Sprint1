@@ -54,4 +54,4 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
-    }
+}
