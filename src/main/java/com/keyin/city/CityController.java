@@ -25,7 +25,7 @@ public class CityController {
         return repo.findById(id);
     }
 
-    @GetMapping("/city/airports_search")
+    @GetMapping("/cities/airports_search")
     public List<City> getCitiesByAirports(@RequestParam String airportName) {
         return (List<City>) repo.findByAirports_airportName(airportName);
     }
