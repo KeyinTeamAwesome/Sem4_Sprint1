@@ -52,4 +52,8 @@ public class Airport {
         return (List<Passenger>) passengers;
     }
 
+    public String toString(){
+        return this.airportName;
+    }
+
 }

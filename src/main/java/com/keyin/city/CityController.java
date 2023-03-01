@@ -1,5 +1,6 @@
 package com.keyin.city;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.keyin.aircraft.Aircraft;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,17 @@ public class CityController {
     @GetMapping("/cities/airports_search")
     public List<City> getCitiesByAirports(@RequestParam String airportName) {
         return (List<City>) repo.findByAirports_airportName(airportName);
+    }
+
+    @GetMapping("/cities_airports")
+    private List<City> getAllCitiesByAirports() throws JsonProcessingException {
+        List <City> a = (List<City>) repo.findAll();
+        a.forEach(i -> {
+            System.out.println(i.getCityName());
+            System.out.println(i.getAirports());
+        });
+
+        return a;
     }
 
     @PostMapping("/city")
