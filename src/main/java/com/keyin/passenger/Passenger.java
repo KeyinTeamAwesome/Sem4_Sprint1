@@ -54,4 +54,8 @@ public class Passenger {
         this.phoneNumber = phoneNumber;
     }
 
+    public String toString(){
+        return this.firstName + " " + this.lastName;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.keyin.airport;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.keyin.aircraft.Aircraft;
 import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,6 +43,18 @@ public class AirportController {
     @GetMapping("/airport/passengers_search")
     public List<Airport> getAirportByPassengers(@RequestParam String lastName) {
         return (List<Airport>) repo.findByPassengers_lastName(lastName);
+    }
+
+    @GetMapping("/airports_passengers")
+    private List<Airport> getAllAirportsByPassengers() throws JsonProcessingException {
+        List <Airport> a = (List<Airport>) repo.findAll();
+        List n = new ArrayList();
+        a.forEach(i -> {
+            n.add(i.getAirportName());
+            n.add(i.getPassengers());
+        });
+
+        return n;
     }
 
     @PostMapping("/airport")
