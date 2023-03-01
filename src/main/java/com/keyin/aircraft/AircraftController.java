@@ -1,5 +1,7 @@
 package com.keyin.aircraft;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.keyin.airport.Airport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +34,18 @@ public class AircraftController {
     @GetMapping("/aircraft/passengers_search")
     public List<Aircraft> getAircraftByPassengers(@RequestParam String lastName) {
         return (List<Aircraft>) repo.findByPassengers_lastName(lastName);
+    }
+
+    @GetMapping("/aircraft_passengers")
+    private List<Aircraft> getAllAircraftByPassengers() throws JsonProcessingException {
+        List <Aircraft> a = (List<Aircraft>) repo.findAll();
+        a.forEach(i -> {
+            System.out.println(i.getType());
+            System.out.println(i.getAirlineName());
+            System.out.println(i.getPassengers());
+        });
+
+        return a;
     }
 
     @PostMapping("/aircraft")
