@@ -48,6 +48,18 @@ public class AircraftController {
         return a;
     }
 
+    @GetMapping("/aircraft_airports")
+    private List<Aircraft> getAllAircraftByAirports() throws JsonProcessingException {
+        List <Aircraft> a = (List<Aircraft>) repo.findAll();
+        a.forEach(i -> {
+            System.out.println(i.getType());
+            System.out.println(i.getAirlineName());
+            System.out.println(i.getAirports());
+        });
+
+        return a;
+    }
+
     @PostMapping("/aircraft")
     public void createAircraft(@RequestBody Aircraft aircraft) {
         repo.save(aircraft);
