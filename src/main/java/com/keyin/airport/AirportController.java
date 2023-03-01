@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,12 +48,13 @@ public class AirportController {
     @GetMapping("/airports_passengers")
     private List<Airport> getAllAirportsByPassengers() throws JsonProcessingException {
         List <Airport> a = (List<Airport>) repo.findAll();
+        List n = new ArrayList();
         a.forEach(i -> {
-            System.out.println(i.getAirportName());
-            System.out.println(i.getPassengers());
+            n.add(i.getAirportName());
+            n.add(i.getPassengers());
         });
 
-        return a;
+        return n;
     }
 
     @PostMapping("/airport")

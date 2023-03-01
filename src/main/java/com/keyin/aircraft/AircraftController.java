@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,25 +40,27 @@ public class AircraftController {
     @GetMapping("/aircraft_passengers")
     private List<Aircraft> getAllAircraftByPassengers() throws JsonProcessingException {
         List <Aircraft> a = (List<Aircraft>) repo.findAll();
+        List n = new ArrayList();
         a.forEach(i -> {
-            System.out.println(i.getType());
-            System.out.println(i.getAirlineName());
-            System.out.println(i.getPassengers());
+            n.add(i.getType());
+            n.add(i.getAirlineName());
+            n.add(i.getPassengers());
         });
 
-        return a;
+        return n;
     }
 
     @GetMapping("/aircraft_airports")
     private List<Aircraft> getAllAircraftByAirports() throws JsonProcessingException {
         List <Aircraft> a = (List<Aircraft>) repo.findAll();
+        List n = new ArrayList();
         a.forEach(i -> {
-            System.out.println(i.getType());
-            System.out.println(i.getAirlineName());
-            System.out.println(i.getAirports());
+            n.add(i.getType());
+            n.add(i.getAirlineName());
+            n.add(i.getAirports());
         });
 
-        return a;
+        return n;
     }
 
     @PostMapping("/aircraft")
