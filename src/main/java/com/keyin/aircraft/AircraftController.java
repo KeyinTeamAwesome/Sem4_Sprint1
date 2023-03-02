@@ -1,7 +1,7 @@
 package com.keyin.aircraft;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.keyin.airport.Airport;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,29 +38,46 @@ public class AircraftController {
     }
 
     @GetMapping("/aircraft_passengers")
-    private List<Aircraft> getAllAircraftByPassengers() throws JsonProcessingException {
-        List <Aircraft> a = (List<Aircraft>) repo.findAll();
-        List n = new ArrayList();
-        a.forEach(i -> {
-            n.add(i.getType());
-            n.add(i.getAirlineName());
-            n.add(i.getPassengers());
+    private List<JSONObject> getAllAircraftByPassengers() {
+        List <Aircraft> aircraftList = (List<Aircraft>) repo.findAll();
+        List<JSONObject> arrayList = new ArrayList<>();
+        aircraftList.forEach(i -> {
+            // Only add aircraft records that have passenger data associated with them
+            if (!i.getPassengers().isEmpty()) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", i.getId());
+                jsonObject.put("airlineName", i.getAirlineName());
+                jsonObject.put("type", i.getType());
+                jsonObject.put("numberOfPassengers", i.getNumberOfPassengers());
+                jsonObject.put("passengers", i.getPassengers());
+
+
+                arrayList.add(jsonObject);
+            }
         });
 
-        return n;
+        return arrayList;
     }
 
     @GetMapping("/aircraft_airports")
-    private List<Aircraft> getAllAircraftByAirports() throws JsonProcessingException {
-        List <Aircraft> a = (List<Aircraft>) repo.findAll();
-        List n = new ArrayList();
-        a.forEach(i -> {
-            n.add(i.getType());
-            n.add(i.getAirlineName());
-            n.add(i.getAirports());
+    private List<JSONObject> getAllAircraftByAirports() {
+        List <Aircraft> aircraftList = (List<Aircraft>) repo.findAll();
+        List<JSONObject> arrayList = new ArrayList<>();
+        aircraftList.forEach(i -> {
+            // Only add aircraft records that have airport data associated with them
+            if (!i.getAirports().isEmpty()) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", i.getId());
+                jsonObject.put("airlineName", i.getAirlineName());
+                jsonObject.put("type", i.getType());
+                jsonObject.put("numberOfPassengers", i.getNumberOfPassengers());
+                jsonObject.put("airports", i.getAirports());
+
+                arrayList.add(jsonObject);
+            }
         });
 
-        return n;
+        return arrayList;
     }
 
     @PostMapping("/aircraft")

@@ -1,7 +1,7 @@
 package com.keyin.city;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.keyin.aircraft.Aircraft;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,15 +33,23 @@ public class CityController {
     }
 
     @GetMapping("/cities_airports")
-    private List<City> getAllCitiesByAirports() throws JsonProcessingException {
-        List <City> a = (List<City>) repo.findAll();
-        List n = new ArrayList();
-        a.forEach(i -> {
-            n.add(i.getCityName());
-            n.add(i.getAirports());
+    private List<JSONObject> getAllCitiesByAirports() {
+        List <City> cityList = (List<City>) repo.findAll();
+        List<JSONObject> arrayList = new ArrayList<>();
+        cityList.forEach(i -> {
+            // Only add city records that have airport data associated with them
+            if (!i.getAirports().isEmpty()) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", i.getId());
+                jsonObject.put("cityName", i.getCityName());
+                jsonObject.put("cityState", i.getCityState());
+                jsonObject.put("airports", i.getAirports());
+
+                arrayList.add(jsonObject);
+            }
         });
 
-        return n;
+        return arrayList;
     }
 
     @PostMapping("/city")

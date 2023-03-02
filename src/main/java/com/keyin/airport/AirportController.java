@@ -6,6 +6,7 @@ import com.keyin.aircraft.Aircraft;
 import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,15 +47,23 @@ public class AirportController {
     }
 
     @GetMapping("/airports_passengers")
-    private List<Airport> getAllAirportsByPassengers() throws JsonProcessingException {
-        List <Airport> a = (List<Airport>) repo.findAll();
-        List n = new ArrayList();
-        a.forEach(i -> {
-            n.add(i.getAirportName());
-            n.add(i.getPassengers());
+    private List<JSONObject> getAllAirportsByPassengers() {
+        List <Airport> airportList = (List<Airport>) repo.findAll();
+        List<JSONObject> arrayList = new ArrayList<>();
+        airportList.forEach(i -> {
+            // Only add airport records that have passenger data associated with them
+            if (!i.getPassengers().isEmpty()) {
+                JSONObject jsonObject = new JSONObject();
+                jsonObject.put("id", i.getId());
+                jsonObject.put("airportName", i.getAirportName());
+                jsonObject.put("airportCode", i.getAirportCode());
+                jsonObject.put("passengers", i.getPassengers());
+
+                arrayList.add(jsonObject);
+            }
         });
 
-        return n;
+        return arrayList;
     }
 
     @PostMapping("/airport")
