@@ -35,6 +35,11 @@ public class PassengerController {
         return (List<Passenger>) repo.findAll();
     }
 
+    @GetMapping("/passenger/{id}")
+    public Optional<Passenger> getPassengerById(@PathVariable Long id) {
+        return repo.findById(id);
+    }
+
     @PostMapping("/passenger")
     public void createPassenger(@RequestBody PassengerOTA passengerOTA) {
 
