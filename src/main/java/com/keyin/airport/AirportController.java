@@ -1,21 +1,20 @@
 package com.keyin.airport;
 
-// AirportController.java this is a controller class and is used to handle the HTTP requests and responses
+// AirportController.java this is a controller class and is used to handle the HTTP requests and responses.
 
-// aircraft.Aircraft is used to import the Aircraft class, aircraft.AircraftRepository is used to import the AircraftRepository interface
-// this is similar for city.City and city.CityRepository
-import com.fasterxml.jackson.core.JsonProcessingException;
+// aircraft.Aircraft is used to import the Aircraft class, aircraft.AircraftRepository is used to import the AircraftRepository interface.
+
 import com.keyin.aircraft.Aircraft;
 import com.keyin.aircraft.AircraftRepository;
 import com.keyin.city.City;
 import com.keyin.city.CityRepository;
-// net.minidev.json.JSONObject is used to import the JSONObject class from the json-smart library
+// net.minidev.json.JSONObject is used to import the JSONObject class from the json-smart library.
 import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-// the imports below are used to import the classes and interfaces that are used in the class AirportController
-// without the javax.servlet.http.HttpServletResponse import, the HttpServletResponse response parameter in the updateAirport method will not work
+// The imports below are used to import the classes and interfaces that are used in the class AirportController.
+// Without the javax.servlet.http.HttpServletResponse import, the HttpServletResponse response parameter in the updateAirport method will not work.
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
