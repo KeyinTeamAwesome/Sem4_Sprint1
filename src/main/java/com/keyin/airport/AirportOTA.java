@@ -1,5 +1,7 @@
 package com.keyin.airport;
 
+// public class AirportOTA is a public class and is mapped to the table airport in the database
+// AirportOTA's purpose is to transfer data between the database (backend) and the application (front end)
 public class AirportOTA {
 
         private String name;

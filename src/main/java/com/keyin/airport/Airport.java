@@ -1,10 +1,12 @@
 package com.keyin.airport;
 
+// imports that are greyed out are not used in this class and the only import needed is passenger.Passenger
 import com.keyin.city.City;
 import com.keyin.aircraft.Aircraft;
 import com.keyin.passenger.Passenger;
-
+// import javax.persistence.* is used to specify the mapping between the entity classes and the database tables
 import javax.persistence.*;
+// import java.util.List is used to import the List interface
 import java.util.List;
 
 // Class Airport is an entity class and is mapped to the table airport in the database
@@ -18,7 +20,7 @@ public class Airport {
     // private long id, String airportName, String airportCode are instance variables of the class Airport
     private long id;
     private String airportName;
-    private String airportCode; // IATA code is used to identify the airport
+    private String airportCode;
 
     // @ManyToMany annotation is used to specify the many-to-many relationship between the entity classes Airport and Passenger
     @ManyToMany
