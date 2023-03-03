@@ -1,5 +1,7 @@
 package com.keyin;
 
+// TestServiceApplication class is used to bootstrap to the Spring Boot application and run the application
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
