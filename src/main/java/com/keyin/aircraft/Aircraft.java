@@ -14,20 +14,19 @@ public class Aircraft {
     @Id
     @SequenceGenerator(name = "aircraft_sequence", sequenceName = "aircraft_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "aircraft_sequence")
-    // instance variables of the class Aircraft
+    // Instance variables of the class Aircraft
     private long id;
     private String type;
     private String airlineName;
     private int numberOfPassengers;
 
-    // relationships between the entity classes Aircraft and Airport and Aircraft and Passenger
-    // NOTE: Why is there no toString() method for the relationship between Aircraft, Airport and Passenger?
+    // Relationships between the entity classes Aircraft and Airport and Aircraft and Passenger
     @ManyToMany
     private List<Airport> airports;
 
     @ManyToMany
     private List<Passenger> passengers;
-    // default constructor
+    // Default constructor
     public Aircraft() {
     }
     // Below are the getters and setters for the instance variables of the class Aircraft
