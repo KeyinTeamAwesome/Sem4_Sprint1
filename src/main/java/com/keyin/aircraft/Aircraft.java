@@ -14,8 +14,8 @@ public class Aircraft {
     @Id
     @SequenceGenerator(name = "aircraft_sequence", sequenceName = "aircraft_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "aircraft_sequence")
-    private long id;
     // instance variables of the class Aircraft
+    private long id;
     private String type;
     private String airlineName;
     private int numberOfPassengers;
@@ -27,7 +27,7 @@ public class Aircraft {
 
     @ManyToMany
     private List<Passenger> passengers;
-
+    // default constructor
     public Aircraft() {
     }
     // Below are the getters and setters for the instance variables of the class Aircraft

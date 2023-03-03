@@ -39,13 +39,13 @@ public class AirportController {
 
     @Autowired
     private AircraftRepository aircraftRepo;
-
+    // @GetMapping annotation is used to handle the HTTP GET requests matched with the given URI expression
+    // @GetMapping("/airports") will get all the airports
     @GetMapping("/airports")
     public List<Airport> getAllAirports() {
         return (List<Airport>) repo.findAll();
     }
 
-    // @GetMapping annotation is used to handle the HTTP GET requests matched with the given URI expression
     // @GetMapping("/airport/{id}") will get the airport with the id that is passed in the URI
     @GetMapping("/airport/{id}")
     public Optional<Airport> getAirportById(@PathVariable Long id) {
