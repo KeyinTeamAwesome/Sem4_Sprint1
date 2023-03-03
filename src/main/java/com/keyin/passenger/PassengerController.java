@@ -49,7 +49,6 @@ public class PassengerController {
         Optional<Aircraft> returnAircraftValue = aircraftRepo.findById(passengerOTA.getAircraftId());
         Optional<Airport> returnAirportValue = airportRepo.findById(passengerOTA.getAirportId());
 
-
         newPassenger.setLastName(passengerOTA.getLastName());
         newPassenger.setFirstName(passengerOTA.getFirstName());
         newPassenger.setPhoneNumber(passengerOTA.getPhoneNumber());
@@ -59,7 +58,6 @@ public class PassengerController {
         City city = returnValue.get();
         Aircraft aircraft = returnAircraftValue.get();
         Airport airport = returnAirportValue.get();
-
 
         city.getPassengers().add(newPassenger);
         aircraft.getPassengers().add(newPassenger);
