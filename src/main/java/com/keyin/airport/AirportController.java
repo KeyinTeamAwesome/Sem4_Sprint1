@@ -34,10 +34,8 @@ public class AirportController {
     @Autowired
     private AirportRepository repo;
 
-
     @Autowired
     private CityRepository cityRepo;
-
 
     @Autowired
     private AircraftRepository aircraftRepo;
@@ -53,12 +51,14 @@ public class AirportController {
     public Optional<Airport> getAirportById(@PathVariable Long id) {
         return repo.findById(id);
     }
+
     // @GetMapping("/airport/passengers_search") will get the airport with the passenger's last name if it matches the last name that is passed in the URI
     @GetMapping("/airport/passengers_search")
     public List<Airport> getAirportByPassengers(@RequestParam String lastName) {
         return (List<Airport>) repo.findByPassengers_lastName(lastName);
     }
-    // @GetMapping("/airport_passengers") the purpose of
+
+    // @GetMapping("/airport_passengers") the purpose of this is to answer the question: "What airports have passengers?"
     @GetMapping("/airports_passengers")
     private List<JSONObject> getAllAirportsByPassengers() {
         List <Airport> airportList = (List<Airport>) repo.findAll();
@@ -78,6 +78,7 @@ public class AirportController {
 
         return arrayList;
     }
+
     // @PostMapping("/airport") will create a new airport with the data that is passed in the request body
     @PostMapping("/airport")
     public void createAirport(@RequestBody AirportOTA airportOTA) {
@@ -122,6 +123,7 @@ public class AirportController {
             }
         }
     }
+
     // @DeleteMapping("/airport/{id}") will delete the airport with the id that is passed in the URI
     @DeleteMapping("/airport/{id}")
     public void deleteAirport(@PathVariable String id, HttpServletResponse response) {
