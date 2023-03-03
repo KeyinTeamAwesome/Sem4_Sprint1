@@ -18,7 +18,7 @@ public class Airport {
     // private long id, String airportName, String airportCode are instance variables of the class Airport
     private long id;
     private String airportName;
-    private String airportCode;
+    private String airportCode; // IATA code is used to identify the airport
 
     // @ManyToMany annotation is used to specify the many-to-many relationship between the entity classes Airport and Passenger
     @ManyToMany
@@ -57,7 +57,7 @@ public class Airport {
         return (List<Passenger>) passengers;
     }
 
-    // tpString() method is used to return the airportName of the airport
+    // toString() method is used to return the airportName of the airport
     public String toString(){
         return this.airportName;
     }
