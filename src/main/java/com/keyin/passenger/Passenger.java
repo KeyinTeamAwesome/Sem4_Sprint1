@@ -1,18 +1,14 @@
 package com.keyin.passenger;
 
-
-import com.keyin.aircraft.Aircraft;
-import com.keyin.airport.Airport;
-import com.keyin.city.City;
 // import javax.persistence.* is used to specify the mapping between the entity classes and the database tables
 import javax.persistence.*;
-import java.util.List;
 
-// Class Passenger is an entity class and is mapped to the table passenger in the database
+
+// Class Passenger is an entity class and is mapped to the table passenger in the database.
 @Entity
 public class Passenger {
-    // @Id annotation, is used to specify the primary key of an entity and @SequenceGenerator is used to generate the primary key value automatically
-    // @GeneratedValue is used to specify the type of generation strategy is used to generate the primary key value
+    // @Id annotation, is used to specify the primary key of an entity and @SequenceGenerator is used to generate the primary key value automatically.
+    // @GeneratedValue is used to specify the type of generation strategy is used to generate the primary key value.
     @Id
     @SequenceGenerator(name = "passenger_sequence", sequenceName = "passenger_sequence", allocationSize = 1, initialValue=1)
     @GeneratedValue(generator = "passenger_sequence")
@@ -22,10 +18,10 @@ public class Passenger {
     private String lastName;
     private String phoneNumber;
 
-    // default constructor and has to have no arguments passed to it
+    // Default constructor and has to have no arguments passed to it.
     public Passenger() {
     }
-    // Below are the getters and setters for the instance variables of the class Passenger
+    // Below are the getters and setters for the instance variables of the class Passenger.
     public long getId() {
         return id;
     }
@@ -57,7 +53,7 @@ public class Passenger {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    // toString() method is used to return the firstName and lastName of the passenger
+    // toString() method is used to return the firstName and lastName of the passenger.
     public String toString(){
         return this.firstName + " " + this.lastName;
     }
