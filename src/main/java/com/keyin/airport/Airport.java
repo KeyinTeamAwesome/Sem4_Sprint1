@@ -12,7 +12,7 @@ import java.util.List;
 // Class Airport is an entity class and is mapped to the table airport in the database
 @Entity
 public class Airport {
-    // @Id annotation is used to specify the primary key of an entity and @SequenceGenerator is used to generate the primary key value automatically
+    // @Id annotation, is used to specify the primary key of an entity and @SequenceGenerator is used to generate the primary key value automatically
     // @GeneratedValue is used to specify the type of generation strategy is used to generate the primary key value
     @Id
     @SequenceGenerator(name = "airport_sequence", sequenceName = "airport_sequence", allocationSize = 1, initialValue = 1)
