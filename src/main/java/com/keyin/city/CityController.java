@@ -1,6 +1,6 @@
 package com.keyin.city;
 
-// CityController.java is a REST controller class that handles the HTTP requests and responses
+// CityController.java is a REST controller class that handles the HTTP requests and responses.
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import net.minidev.json.JSONObject;
@@ -16,29 +16,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-// @RestController annotation is used to create RESTful web services using Spring MVC
-// @CrossOrigin annotation is used to allow cross-origin requests
-// cross-origin requests are requests that are made from a different domain than the domain of the resource being requested
+// @RestController annotation is used to create RESTful web services using Spring MVC.
+// @CrossOrigin annotation is used to allow cross-origin requests.
+// Cross-origin requests are requests that are made from a different domain than the domain of the resource being requested.
 @RestController
 @CrossOrigin
 public class CityController {
-    // @Autowired annotation is used to inject the CityRepository dependency into the CityController class
-    // private CityRepository repo creates a new instance of the CityRepository class ( CityRepository repo = new CityRepository() )
+    // @Autowired annotation is used to inject the CityRepository dependency into the CityController class.
+    // private CityRepository repo creates a new instance of the CityRepository class ( CityRepository repo = new CityRepository() ).
     @Autowired
     private CityRepository repo;
 
-    // @GetMapping annotation is used to handle the HTTP GET requests matched with the given URI expression
-    // @GetMapping("/cities") will get all the cities
+    // @GetMapping annotation is used to handle the HTTP GET requests matched with the given URI expression.
+    // @GetMapping("/cities") will get all the cities.
     @GetMapping("/cities")
     public List<City> getAllCities() {
         return (List<City>) repo.findAll();
     }
-    // @GetMapping("/city/{id}") will get the city with the id that is passed in the URI
+    // @GetMapping("/city/{id}") will get the city with the id that is passed in the URI.
     @GetMapping("/city/{id}")
     public Optional<City> getCityById(@PathVariable Long id) {
         return repo.findById(id);
     }
-    //  @GetMapping("/cities/airports_search") will get the cities that have the airport name that is passed in the URI
+    //  @GetMapping("/cities/airports_search") will get the cities that have the airport name that is passed in the URI.
     @GetMapping("/cities/airports_search")
     public List<City> getCitiesByAirports(@RequestParam String airportName) {
         return (List<City>) repo.findByAirports_airportName(airportName);
@@ -49,7 +49,7 @@ public class CityController {
         List <City> cityList = (List<City>) repo.findAll();
         List<JSONObject> arrayList = new ArrayList<>();
         cityList.forEach(i -> {
-            // Only add city records that have airport data associated with them
+            // Only add city records that have airport data associated with them.
             if (!i.getAirports().isEmpty()) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("id", i.getId());
@@ -63,12 +63,12 @@ public class CityController {
 
         return arrayList;
     }
-    // @PostMapping("/city") will create a new city with the data that is passed in
+    // @PostMapping("/city") will create a new city with the data that is passed in.
     @PostMapping("/city")
     public void createCity(@RequestBody City city) {
         repo.save(city);
     }
-    // @PutMapping("/city/{id}") will update the city with the id that is passed in the URI with the data that is passed in
+    // @PutMapping("/city/{id}") will update the city with the id that is passed in the URI with the data that is passed in.
     @PutMapping("/city/{id}")
     public void updateCity(@PathVariable String id, @RequestBody City city, HttpServletResponse response) {
         Optional<City> returnValue = repo.findById(Long.parseLong(id));
@@ -90,7 +90,7 @@ public class CityController {
             }
         }
     }
-    // @DeleteMapping("/city/{id}") will delete the city with the id that is passed in the URI
+    // @DeleteMapping("/city/{id}") will delete the city with the id that is passed in the URI.
     @DeleteMapping("/city/{id}")
     public void deleteCity(@PathVariable String id, HttpServletResponse response) {
         Optional<City> returnValue = repo.findById(Long.parseLong(id));
