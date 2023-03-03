@@ -1,6 +1,6 @@
 package com.keyin.airport;
 
-// AirportController.java is a controller class and is used to handle the HTTP requests and responses
+// AirportController.java this is a controller class and is used to handle the HTTP requests and responses
 
 // aircraft.Aircraft is used to import the Aircraft class, aircraft.AircraftRepository is used to import the AircraftRepository interface
 // this is similar for city.City and city.CityRepository
