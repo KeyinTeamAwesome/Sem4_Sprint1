@@ -22,15 +22,15 @@ public class Airport {
     private String airportName;
     private String airportCode;
 
-    // @ManyToMany annotation is used to specify the many-to-many relationship between the entity classes Airport and Passenger
+    // @ManyToMany annotation is used to specify the many-to-many relationship between the entity classes Airport and Passenger.
     @ManyToMany
     private List<Passenger> passengers;
 
-    // public Airport() is a default constructor and has to have no arguments passed to it
+    // Public Airport() is a default constructor and has to have no arguments passed to it.
     public Airport() {
     }
 
-    // Below are the getters and setters for the instance variables of the class Airport
+    // Below are the getters and setters for the instance variables of the class Airport.
     public long getId() {
         return id;
     }
@@ -59,7 +59,7 @@ public class Airport {
         return (List<Passenger>) passengers;
     }
 
-    // toString() method is used to return the airportName of the airport
+    // toString() method is used to return the airportName of the airport.
     public String toString(){
         return this.airportName;
     }
