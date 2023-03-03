@@ -1,5 +1,8 @@
 package com.keyin.passenger;
 
+// public Class PassengerOTA, is a public class and is mapped to the table passenger in the database
+// PassengerOTA's purpose is to transfer data between the database (backend) and the application (front end)
+
 public class PassengerOTA {
 
     private String firstName;
