@@ -20,7 +20,7 @@ public class Airport {
     // private long id, String airportName, String airportCode are instance variables of the class Airport
     private long id;
     private String airportName;
-    private String airportCode; // IATA code is used to identify the airport
+    private String airportCode;
 
     // @ManyToMany annotation is used to specify the many-to-many relationship between the entity classes Airport and Passenger
     @ManyToMany
