@@ -1,6 +1,7 @@
-# Semester 4 | Java
+<h1>Semester 4 | Java | Sprint 1
+  
 
-## **Sprint 1: Server (Spring Boot), HTTP Client, Command Line Interface, Testing**
+*Server (Spring Boot), HTTP Client, Command Line Interface*</h1>
 
 This is a group project for our 4nd Semester at Keyin College's Software Development Program.
 
@@ -10,15 +11,28 @@ This is a group project for our 4nd Semester at Keyin College's Software Develop
 
 ---
 
-### **Part 1:** Spring Boot Server
+## **Part 1:** Spring Boot Server
 
 This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a server program that connects to a database and implements an API that is accessible via HTTP.
 
 ---
 
-#### ***🚧 In Progress 🚧* ➝ Endpoints**
+### **Entities**
 
-##### **Questions**
+| Entity       | Fields                                      | 
+| :----------: | :------------------------------------------ | 
+|    Cities    | id, cityName, cityState, cityPopulation     |
+|  Passengers  | id, firstName, lastName, phoneNumber        |
+|   Airports   | id, name, code                              |
+|   Aircraft   | id, type, airlineName, numberOfPassengers   |
+
+---
+
+### **Endpoints**
+
+*🚧 Under Construction 🚧*
+
+#### **Questions**
 
 | Method      | URL                                 | Question                                               |
 | :---------: | :---------------------------------- | :----------------------------------------------------- |
@@ -27,11 +41,11 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 |     GET     | localhost:8080/aircraft_airports    | Which airports can aircraft take off from and land at? |
 |     GET     | localhost:8080/airports_passengers  | What airports have passengers used?                    |
 
-##### **Aircraft**
+#### **Aircraft**
 
 | Method      | URL                                 |
 | :---------: | :---------------------------------- |
-|  GET (All)  | localhost:8080/aircraft/listing     |
+|  GET (All)  | localhost:8080/aircraft/            |
 | GET (By ID) | localhost:8080/aircraft/{id}        |
 |     POST    | localhost:8080/aircraft             |
 |     PUT     | localhost:8080/aircraft/{id}        |
