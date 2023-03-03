@@ -16,7 +16,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 
 ---
 
-### Contributers
+### Contributors
 
 <table>
   <tr>
