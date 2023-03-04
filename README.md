@@ -41,15 +41,57 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 |     GET     | localhost:8080/aircraft_airports    | Which airports can aircraft take off from and land at? |
 |     GET     | localhost:8080/airports_passengers  | What airports have passengers used?                    |
 
+#### **City**
+
+| Method      | URI                                 |
+| :---------: | :---------------------------------- |
+|  GET (All)  | localhost:8080/cities               |
+| GET (By ID) | localhost:8080/city/{id}            |
+|     POST    | localhost:8080/cities               |
+|     PUT     | localhost:8080/city/{id}            |
+|    DELETE   | localhost:8080/city/{id}            |
+
+#### **Passengers**
+
+| Method      | URI                                 |
+| :---------: | :---------------------------------- |
+|  GET (All)  | localhost:8080/passengers           |
+| GET (By ID) | localhost:8080/passenger/{id}       |
+|     POST    | localhost:8080/passengers           |
+|     PUT     | localhost:8080/passenger/{id}       |
+|    DELETE   | localhost:8080/passenger/{id}       |
+ 
+#### **Airport**
+
+|              Method                | URI                                       | Query Parameter       |
+| :--------------------------------: | :--------------------------------------   | :-------------------- |
+|             GET (All)              | localhost:8080/airports                   |                       |
+|            GET (By ID)             | localhost:8080/airport/{id}               |                       |
+|       GET (Airport By Name)        | localhost:8080/aircraft/airports_search   | ?airportName=<String> |
+|   GET (Passenger By Last Name)     | localhost:8080/aircraft/passengers_search | ?lastName=<String>    |
+|                POST                | localhost:8080/airports                   |  
+|                PUT                 | localhost:8080/airport/{id}               |  
+|               DELETE               | localhost:8080/airport/{id}               |  
+ 
 #### **Aircraft**
 
-| Method      | URL                                 |
+| Method      | URI                                 |
 | :---------: | :---------------------------------- |
 |  GET (All)  | localhost:8080/aircraft/            |
 | GET (By ID) | localhost:8080/aircraft/{id}        |
 |     POST    | localhost:8080/aircraft             |
 |     PUT     | localhost:8080/aircraft/{id}        |
 |    DELETE   | localhost:8080/aircraft/{id}        |
+
+    @GetMapping("/aircraft/airports_search")
+    public List<Aircraft> getAircraftByAirports(@RequestParam String airportName) {
+        return (List<Aircraft>) repo.findByAirports_airportName(airportName);
+    }
+
+    @GetMapping("/aircraft/passengers_search")
+    public List<Aircraft> getAircraftByPassengers(@RequestParam String lastName) {
+        return (List<Aircraft>) repo.findByPassengers_lastName(lastName);
+    }
 
 ---
 
