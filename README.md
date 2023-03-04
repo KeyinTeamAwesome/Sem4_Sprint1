@@ -34,7 +34,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 
 #### **Questions**
 
-| Method      | URL                                 | Question                                               |
+|   Method    | URL                                 | Question                                               |
 | :---------: | :---------------------------------- | :----------------------------------------------------- |
 |     GET     | localhost:8080/cities_airports      | What airports are in what cities?                      |
 |     GET     | localhost:8080/aircraft_passengers  | List all aircraft passengers have travelled on?        |
@@ -43,7 +43,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 
 #### **City**
 
-| Method      | URI                                 |
+|   Method    | URI                                 |
 | :---------: | :---------------------------------- |
 |  GET (All)  | localhost:8080/cities               |
 | GET (By ID) | localhost:8080/city/{id}            |
@@ -53,7 +53,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 
 #### **Passengers**
 
-| Method      | URI                                 |
+|   Method    | URI                                 |
 | :---------: | :---------------------------------- |
 |  GET (All)  | localhost:8080/passengers           |
 | GET (By ID) | localhost:8080/passenger/{id}       |
@@ -63,19 +63,19 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
  
 #### **Airport**
 
-|              Method                | URI                                       | Query Parameter       |
-| :--------------------------------: | :--------------------------------------   | :-------------------- |
-|             GET (All)              | localhost:8080/airports                   |                       |
-|            GET (By ID)             | localhost:8080/airport/{id}               |                       |
-|       GET (Airport By Name)        | localhost:8080/aircraft/airports_search   | ?airportName=<String> |
-|   GET (Passenger By Last Name)     | localhost:8080/aircraft/passengers_search | ?lastName=<String>    |
-|                POST                | localhost:8080/airports                   |  
-|                PUT                 | localhost:8080/airport/{id}               |  
-|               DELETE               | localhost:8080/airport/{id}               |  
+|              Method                | URI                                       | Query Parameter        |
+| :--------------------------------: | :--------------------------------------   | :--------------------  |
+|             GET (All)              | localhost:8080/airports                   |                        |
+|            GET (By ID)             | localhost:8080/airport/{id}               |                        |
+|       GET (Airport By Name)        | localhost:8080/aircraft/airports_search   | ?airportName=\<String> |
+|   GET (Passenger By Last Name)     | localhost:8080/aircraft/passengers_search | ?lastName=\<String>    |
+|                POST                | localhost:8080/airports                   |                        |
+|                PUT                 | localhost:8080/airport/{id}               |                        |
+|               DELETE               | localhost:8080/airport/{id}               |                        |
  
 #### **Aircraft**
 
-| Method      | URI                                 |
+|   Method    | URI                                 |
 | :---------: | :---------------------------------- |
 |  GET (All)  | localhost:8080/aircraft/            |
 | GET (By ID) | localhost:8080/aircraft/{id}        |
@@ -83,7 +83,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
 |     PUT     | localhost:8080/aircraft/{id}        |
 |    DELETE   | localhost:8080/aircraft/{id}        |
 
-    @GetMapping("/aircraft/airports_search")
+<!--     @GetMapping("/aircraft/airports_search")
     public List<Aircraft> getAircraftByAirports(@RequestParam String airportName) {
         return (List<Aircraft>) repo.findByAirports_airportName(airportName);
     }
@@ -91,7 +91,7 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
     @GetMapping("/aircraft/passengers_search")
     public List<Aircraft> getAircraftByPassengers(@RequestParam String lastName) {
         return (List<Aircraft>) repo.findByPassengers_lastName(lastName);
-    }
+    } -->
 
 ---
 
