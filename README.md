@@ -1,6 +1,10 @@
-<h1>Semester 4 | Java | Sprint 1
+<h1>
+  Semester 4 | Java | Sprint 1
 
-*Server (Spring Boot), HTTP Client, Command Line Interface*</h1>
+  ---
+
+  *Server (Spring Boot), HTTP Client, Command Line Interface*
+</h1>
 
 This is a group project for our 4nd Semester at Keyin College's Software Development Program.
 
@@ -120,5 +124,4 @@ This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a ser
       <a href="https://github.com/Tpower16"><img height="50px" src="https://avatars.githubusercontent.com/u/100700181?v=4"></a>
     </td>
   </tr>
-
 </table>
