@@ -16,6 +16,7 @@
 
 ## **Part 1:** Spring Boot Server
 
+### **Overview**
 This **Java (Maven)** project uses **Spring Boot** and **MySql** to create a server program that connects to a database and implements an API that is accessible via HTTP. An HTTP client accessible via a command line can be found in [**Part 2**](https://github.com/KeyinTeamAwesome/Sem4_Sprint1_Part2).
 
 ---
