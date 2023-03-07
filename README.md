@@ -5,9 +5,10 @@
 </h1>
 
 
+This is a group project for our 4nd Semester at Keyin College's Software Development Program.
+
 > __Note__ 
 >
-> This is a group project for our 4nd Semester at Keyin College's Software Development Program.
 >
 >⠀⠀❗ ⠀➝⠀This repository contains **Part 1** of the assignment.⠀⠀ *(Spring Boot Server)*
 >
